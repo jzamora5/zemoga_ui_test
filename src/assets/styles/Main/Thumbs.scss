@@ -1,0 +1,23 @@
+@import '../Vars.module.scss';
+
+:root {
+  --thumbs-size: 30px;
+}
+
+.thumbs {
+  width: var(--thumbs-size);
+  height: var(--thumbs-size);
+  @include flexboxCenter;
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+}
+
+@media all and (min-width: 768px) {
+}
+
+@media all and (min-width: 1100px) {
+}
+
+@media all and (min-width: 1440px) {
+}

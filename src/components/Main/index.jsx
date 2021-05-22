@@ -1,11 +1,18 @@
-import Card from './Card';
+import { connect } from 'react-redux';
+import CardsList from './CardsList';
 
-const Main = () => {
+const Main = (props) => {
   return (
     <main role="main">
-      <Card />
+      <CardsList data={props.data} />
     </main>
   );
 };
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    data: state.data,
+  };
+};
+
+export default connect(mapStateToProps, null)(Main);
