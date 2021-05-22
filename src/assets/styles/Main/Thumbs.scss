@@ -8,8 +8,6 @@
   width: var(--thumbs-size);
   height: var(--thumbs-size);
   @include flexboxCenter;
-  position: absolute;
-  top: 0;
   cursor: pointer;
 }
 
