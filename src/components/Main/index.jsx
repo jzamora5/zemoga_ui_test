@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CardsList from './CardsList';
@@ -8,6 +8,7 @@ import Select, { components } from 'react-select';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import '../../assets/styles/Main/Main.scss';
 import triangle from '../../assets/img/triangle.svg';
+import { useMediaQuery } from 'react-responsive';
 
 const selectColor = '#333333';
 
@@ -53,6 +54,14 @@ const options = [
 ];
 
 const Main = ({ getData, data, loading, error }) => {
+  const isTablet = useMediaQuery({ query: '(min-device-width: 768px)' });
+
+  const [cardsMode, setCardsMode] = useState('list');
+
+  const handleSelectChange = (selectedOption) => {
+    setCardsMode(selectedOption.value);
+  };
+
   useEffect(() => {
     getData();
     // eslint-disable-next-line
@@ -78,11 +87,20 @@ const Main = ({ getData, data, loading, error }) => {
     />
   );
 
+  const cardListDependingMedia = () => {
+    let mode = cardsMode;
+
+    if (!isTablet) mode = 'grid';
+
+    return <CardsList data={data} mode={mode} />;
+  };
+
   return (
     <main role="main" className="main">
       <header className="main__header">
         <h2>Previous Rulings</h2>
         <Select
+          onChange={handleSelectChange}
           options={options}
           styles={customStyles}
           components={{ DropdownIndicator, IndicatorSeparator: () => null }}
@@ -92,7 +110,7 @@ const Main = ({ getData, data, loading, error }) => {
         />
       </header>
       {error && <h2>{error}</h2>}
-      {loading ? loader : <CardsList data={data} mode="list" />}
+      {loading ? loader : cardListDependingMedia()}
     </main>
   );
 };
