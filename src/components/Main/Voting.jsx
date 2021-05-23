@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Thumbs from './Thumbs';
 
 export const Voting = ({ className }) => {
@@ -14,6 +15,14 @@ export const Voting = ({ className }) => {
       </div>
     </>
   );
+};
+
+Voting.defaultProps = {
+  className: '',
+};
+
+Voting.propTypes = {
+  className: PropTypes.string,
 };
 
 export default Voting;

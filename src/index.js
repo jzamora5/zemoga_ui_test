@@ -6,8 +6,9 @@ import thunk from 'redux-thunk';
 import reducer from './reducers';
 import App from './App';
 import './assets/styles/index.scss';
-import initialState from './initialState.json';
+// import initialState from './initialState.json';
 
+const initialState = { data: [], loading: false, error: null };
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(

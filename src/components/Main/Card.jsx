@@ -41,11 +41,13 @@ const Card = ({ cardData, mode }) => {
 Card.defaultProps = {
   cardData: {},
   mode: 'grid',
+  id: '',
 };
 
 Card.propTypes = {
   cardData: PropTypes.object,
   mode: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default Card;

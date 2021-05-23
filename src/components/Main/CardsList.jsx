@@ -6,7 +6,14 @@ const CardsList = ({ data, mode }) => {
   return (
     <section className={`card-list--${mode}`}>
       {data.map((cardData) => {
-        return <Card cardData={cardData} mode={mode}></Card>;
+        return (
+          <Card
+            cardData={cardData}
+            mode={mode}
+            id={cardData.id}
+            key={cardData.id}
+          ></Card>
+        );
       })}
     </section>
   );
