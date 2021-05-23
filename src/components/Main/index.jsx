@@ -5,53 +5,11 @@ import CardsList from './CardsList';
 import { getData } from '../../actions';
 import Loader from 'react-loader-spinner';
 import Select, { components } from 'react-select';
+import { useMediaQuery } from 'react-responsive';
+import { customStyles, options } from '../../utils/selectOptions';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import '../../assets/styles/Main/Main.scss';
 import triangle from '../../assets/img/triangle.svg';
-import { useMediaQuery } from 'react-responsive';
-
-const selectColor = '#333333';
-
-const generalSelectStyles = {
-  border: `2px solid ${selectColor}`,
-  textAlign: 'center',
-};
-
-const customStyles = {
-  control: () => ({
-    ...generalSelectStyles,
-    display: 'flex',
-    justifyContent: 'flex-end',
-  }),
-  dropdownIndicator: (provided) => ({
-    padding: 0,
-  }),
-  option: (provided, state) => ({
-    ...provided,
-    ...generalSelectStyles,
-    cursor: 'pointer',
-    background: state.isSelected && 'transparent',
-    color: state.isSelected && selectColor,
-    '&:hover': {
-      background: 'transparent',
-    },
-    borderTop: '2px',
-  }),
-  menu: (provided) => ({
-    ...provided,
-    marginTop: 0,
-  }),
-  menuList: (provided) => ({
-    ...provided,
-    paddingTop: 0,
-    paddingBottom: 0,
-  }),
-};
-
-const options = [
-  { value: 'list', label: 'List' },
-  { value: 'grid', label: 'Grid' },
-];
 
 const Main = ({ getData, data, loading, error }) => {
   const isTablet = useMediaQuery({ query: '(min-device-width: 768px)' });
