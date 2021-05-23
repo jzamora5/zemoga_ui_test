@@ -9,7 +9,8 @@ const remoteImgURL =
   'https://raw.githubusercontent.com/jzamora5/assets/main/zemoga';
 
 const Card = ({ cardData, mode }) => {
-  console.log(cardData.picture);
+  const titleThumbType =
+    cardData.votes.positive >= cardData.votes.negative ? 'up' : 'down';
 
   const backgroundImage = `${remoteImgURL}/${cardData.picture}`;
 
@@ -23,7 +24,7 @@ const Card = ({ cardData, mode }) => {
     >
       <div className="card__body">
         <div className="card__title">
-          <Thumbs type="down" />
+          <Thumbs type={titleThumbType} />
           <EllipsisText text={cardData.name} length={24} />
         </div>
         <div className="card__desc">
