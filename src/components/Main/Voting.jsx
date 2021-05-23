@@ -7,8 +7,8 @@ export const Voting = ({ className }) => {
   return (
     <>
       <div className={className}>
-        <Thumbs type="up" className="voting__thumbsUp" />
-        <Thumbs type="down" className="voting__thumbsDown" />
+        <Thumbs type="up" className="voting__thumbsUp" clickable />
+        <Thumbs type="down" className="voting__thumbsDown" clickable />
         <button className="voting__button">
           <span>{voteMsg}</span>
         </button>

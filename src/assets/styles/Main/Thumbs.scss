@@ -4,7 +4,6 @@
   width: $thumbs-size;
   height: $thumbs-size;
   @include flexboxCenter;
-  cursor: pointer;
 }
 
 @media all and (min-width: 768px) {

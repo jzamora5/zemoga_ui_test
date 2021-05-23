@@ -4,13 +4,69 @@ import { connect } from 'react-redux';
 import CardsList from './CardsList';
 import { getData } from '../../actions';
 import Loader from 'react-loader-spinner';
+import Select, { components } from 'react-select';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import '../../assets/styles/Main/Main.scss';
+import triangle from '../../assets/img/triangle.svg';
+
+const selectColor = '#333333';
+
+const generalSelectStyles = {
+  border: `2px solid ${selectColor}`,
+  textAlign: 'center',
+};
+
+const customStyles = {
+  control: () => ({
+    ...generalSelectStyles,
+    display: 'flex',
+    justifyContent: 'flex-end',
+  }),
+  dropdownIndicator: (provided) => ({
+    padding: 0,
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    ...generalSelectStyles,
+    cursor: 'pointer',
+    background: state.isSelected && 'transparent',
+    color: state.isSelected && selectColor,
+    '&:hover': {
+      background: 'transparent',
+    },
+    borderTop: '2px',
+  }),
+  menu: (provided) => ({
+    ...provided,
+    marginTop: 0,
+  }),
+  menuList: (provided) => ({
+    ...provided,
+    paddingTop: 0,
+    paddingBottom: 0,
+  }),
+};
+
+const options = [
+  { value: 'list', label: 'List' },
+  { value: 'grid', label: 'Grid' },
+];
 
 const Main = ({ getData, data, loading, error }) => {
   useEffect(() => {
     getData();
     // eslint-disable-next-line
   }, []);
+
+  const DropdownIndicator = (props) => {
+    return (
+      components.DropdownIndicator && (
+        <components.DropdownIndicator {...props} className="main__select-arrow">
+          <img src={triangle} alt="triangle icon" />
+        </components.DropdownIndicator>
+      )
+    );
+  };
 
   const loader = (
     <Loader
@@ -23,8 +79,18 @@ const Main = ({ getData, data, loading, error }) => {
   );
 
   return (
-    <main role="main">
-      <h2>Previous Rulings</h2>
+    <main role="main" className="main">
+      <header className="main__header">
+        <h2>Previous Rulings</h2>
+        <Select
+          options={options}
+          styles={customStyles}
+          components={{ DropdownIndicator, IndicatorSeparator: () => null }}
+          className="main__select"
+          classNamePrefix="main__select"
+          defaultValue={options[0]}
+        />
+      </header>
       {error && <h2>{error}</h2>}
       {loading ? loader : <CardsList data={data} mode="list" />}
     </main>

@@ -18,6 +18,8 @@ const Thumbs = ({ type, active, clickable, className }) => {
     border: active ? '2px solid white' : '',
   };
 
+  if (clickable) inlineThumbsStyle.cursor = 'pointer';
+
   return (
     <div className={classNames('thumbs', className)} style={inlineThumbsStyle}>
       <img src={thumbsIcon} alt={`Thumbs ${type}`} />

@@ -1,0 +1,31 @@
+@import '../Vars.module.scss';
+
+:root {
+  --select-arrow-right-padding: 10.5px;
+  --select-font-size: 10.5px;
+  --select-width: 131px;
+}
+
+.main {
+  .main__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .main__select {
+    font-size: var(--select-font-size);
+    width: var(--select-width);
+
+    .main__select__value-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .main__select__indicators {
+      padding-right: var(--select-arrow-right-padding);
+      // padding-top: var(--select-arrow-tb-padding);
+      // padding-bottom: var(--select-arrow-tb-padding);
+    }
+  }
+}
