@@ -26,7 +26,7 @@ const Main = ({ getData, data, loading, error }) => {
     <main role="main">
       <h2>Previous Rulings</h2>
       {error && <h2>{error}</h2>}
-      {loading ? loader : <CardsList data={data} mode="grid" />}
+      {loading ? loader : <CardsList data={data} mode="list" />}
     </main>
   );
 };

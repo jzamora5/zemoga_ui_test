@@ -12,11 +12,13 @@ export const getData = () => async (dispatch) => {
     const dataCollection = db.collection(DATA_COLLECTION);
     const snapshot = await dataCollection.get();
 
-    const data = snapshot.docs.map((doc) => {
+    const data = [];
+
+    snapshot.docs.forEach((doc) => {
       const docData = doc.data();
       docData.lastUpdated = docData.lastUpdated.toDate();
       docData.id = doc.id;
-      return docData;
+      data[docData.order - 1] = docData;
     });
 
     dispatch({

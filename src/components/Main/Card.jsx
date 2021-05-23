@@ -8,20 +8,32 @@ import EllipsisText from 'react-ellipsis-text';
 const remoteImgURL =
   'https://raw.githubusercontent.com/jzamora5/assets/main/zemoga';
 
+const GRADIENT =
+  'no-repeat 20px/100% linear-gradient(90deg, rgba(0, 0, 0, 0.0001) 0%, #888888 19.79%, #666666 50%, rgba(51, 51, 51, 0.6) 71.88%), ';
+
 const Card = ({ cardData, mode }) => {
+  let gradient = '';
+  let bgSize = 'center / cover';
+
   const titleThumbType =
     cardData.votes.positive >= cardData.votes.negative ? 'up' : 'down';
 
-  const backgroundImage = `${remoteImgURL}/${cardData.picture}`;
+  let imageName = cardData.picture.split('.png')[0];
+
+  if (mode === 'list') {
+    imageName += '-small';
+    gradient = GRADIENT;
+    bgSize = '-27px / 30% no-repeat ';
+  }
+
+  const backgroundImage = `${remoteImgURL}/${imageName}.png`;
+
+  const inlineStyleArticle = {
+    background: `${gradient}url(${backgroundImage}) ${bgSize}`,
+  };
 
   return (
-    <article
-      className={`card--${mode}`}
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-      }}
-    >
+    <article className={`card--${mode}`} style={inlineStyleArticle}>
       <div className="card__body">
         <div className="card__title">
           <Thumbs type={titleThumbType} />

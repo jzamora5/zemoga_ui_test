@@ -13,18 +13,101 @@
   --card-voting-button-height: 38px;
 }
 
+// Shared Styles
+
 .card--grid,
 .card--list {
   position: relative;
   color: $color-white;
   // flex-grow: 1;
+
+  // Voting Component
+
+  .card__voting {
+    // position: relative;
+    // position: absolute;
+
+    @include flexboxCenter;
+    justify-content: flex-end;
+    margin-right: var(--card-voting-right-margin);
+
+    .voting__thumbsUp {
+      // position: absolute;
+      top: 0;
+    }
+    .voting__thumbsDown {
+      // position: absolute;
+      bottom: 0;
+      margin-left: var(--voting-inner-margins);
+      margin-right: var(--voting-inner-margins);
+    }
+    .voting__button {
+      border: 1px solid $color-white;
+      background: $color-darker-background;
+      color: $color-white;
+
+      width: 107px;
+      height: var(--card-voting-button-height);
+    }
+
+    .voting__button span {
+      font-size: 15px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  // Gauge Bar Component
+
+  .card__gauge-bar {
+    // background: green;
+    width: 100%;
+    height: 36px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+
+    .gauge-bar__positive {
+      height: 100%;
+      background: rgba($color-green-positive, 0.6);
+      @include flexboxCenter;
+      justify-content: flex-start;
+    }
+
+    .gauge-bar__negative {
+      height: 100%;
+      background: rgba($color-yellow-negative, 0.6);
+      @include flexboxCenter;
+      justify-content: flex-end;
+    }
+
+    .gauge-bar__percentage--positive,
+    .gauge-bar__percentage--negative {
+      @include flexboxCenter;
+      font-size: 18px;
+    }
+    .gauge-bar__percentage--positive {
+      margin-left: 12px;
+
+      img {
+        margin-right: 9px;
+      }
+    }
+    .gauge-bar__percentage--negative {
+      margin-right: 12px;
+
+      img {
+        margin-left: 9px;
+      }
+    }
+  }
 }
 
 .card--grid {
   width: var(--card-grid-size);
   height: var(--card-grid-size);
   flex-shrink: 0;
-
+  // background-size: cover;
   // Body
   .card__body {
     width: 100%;
@@ -76,96 +159,46 @@
     margin-bottom: 12px;
     font-size: var(--card-category-font-size);
   }
-
-  // Voting Component
-
-  .card__voting {
-    // position: relative;
-    // position: absolute;
-    top: 50%;
-    right: 0;
-
-    @include flexboxCenter;
-    justify-content: flex-end;
-    margin-right: var(--card-voting-right-margin);
-
-    .voting__thumbsUp {
-      // position: absolute;
-      top: 0;
-    }
-    .voting__thumbsDown {
-      // position: absolute;
-      bottom: 0;
-      margin-left: var(--voting-inner-margins);
-      margin-right: var(--voting-inner-margins);
-    }
-    .voting__button {
-      border: 1px solid $color-white;
-      background: $color-darker-background;
-      color: $color-white;
-
-      width: 107px;
-      height: var(--card-voting-button-height);
-    }
-
-    .voting__button span {
-      font-size: 15px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-  }
-
-  // Gauge Bar Component
-
-  .card__gauge-bar {
-    // background: green;
-    width: 300px;
-    height: 36px;
-    position: absolute;
-    bottom: 0;
-    display: flex;
-
-    .gauge-bar__positive {
-      height: 100%;
-      background: rgba($color-green-positive, 0.6);
-      @include flexboxCenter;
-      justify-content: flex-start;
-    }
-
-    .gauge-bar__negative {
-      height: 100%;
-      background: rgba($color-yellow-negative, 0.6);
-      @include flexboxCenter;
-      justify-content: flex-end;
-    }
-
-    .gauge-bar__percentage--positive,
-    .gauge-bar__percentage--negative {
-      @include flexboxCenter;
-      font-size: 18px;
-    }
-    .gauge-bar__percentage--positive {
-      margin-left: 12px;
-
-      img {
-        margin-right: 9px;
-      }
-    }
-    .gauge-bar__percentage--negative {
-      margin-right: 12px;
-
-      img {
-        margin-left: 9px;
-      }
-    }
-  }
-}
-
-.card--list {
-  background: blue;
 }
 
 @media all and (min-width: 768px) {
+  .card--list {
+    height: 142px;
+    margin-bottom: 14px;
+
+    .card__title {
+      display: flex;
+    }
+
+    .card__title span {
+      color: inherit;
+      font-size: 28px;
+      padding-left: 120px;
+
+      span {
+        padding-left: 0;
+      }
+    }
+
+    .card__desc {
+      margin: 18px 300px 0 152px;
+    }
+
+    .card__voting {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      margin-bottom: 67px;
+      margin-right: 12px;
+    }
+    .card__category {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin: 8px 14px 12px 0;
+      font-size: 12px;
+    }
+  }
 }
 
 @media all and (min-width: 1100px) {
