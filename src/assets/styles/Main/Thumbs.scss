@@ -1,12 +1,8 @@
 @import '../Vars.module.scss';
 
-:root {
-  --thumbs-size: 30px;
-}
-
 .thumbs {
-  width: var(--thumbs-size);
-  height: var(--thumbs-size);
+  width: $thumbs-size;
+  height: $thumbs-size;
   @include flexboxCenter;
   cursor: pointer;
 }

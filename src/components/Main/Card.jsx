@@ -24,7 +24,7 @@ const Card = ({ cardData, mode }) => {
       <div className="card__body">
         <div className="card__title">
           <Thumbs type="down" />
-          <h2>{cardData.name}</h2>
+          <EllipsisText text={cardData.name} length={24} />
         </div>
         <div className="card__desc">
           <EllipsisText text={cardData.description} length={60} />
