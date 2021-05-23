@@ -466,10 +466,30 @@ main h2 {
 }
 
 @media all and (min-width: 768px) {
+  :root {
+    --lateral-sizes: 24px;
+  }
+
   html,
   body {
     font-size: 14px;
   }
+
+  // Fix Separation
+  .banner {
+    margin-left: var(--lateral-sizes);
+    margin-right: var(--lateral-sizes);
+  }
+
+  main[role='main'] {
+    padding: 0 var(--lateral-sizes);
+  }
+
+  hr[role='separator'] {
+    margin-left: var(--lateral-sizes);
+    margin-right: var(--lateral-sizes);
+  }
+  //
 
   .hero {
     max-height: 38rem;

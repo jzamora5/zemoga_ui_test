@@ -13,10 +13,16 @@
   }
 }
 
-.card-list--list {
-}
-
 @media all and (min-width: 768px) {
+  .card-list--grid {
+    flex-wrap: wrap;
+    overflow-x: initial;
+    justify-content: space-between;
+
+    article:not(:first-child) {
+      margin-left: 0;
+    }
+  }
 }
 
 @media all and (min-width: 1100px) {

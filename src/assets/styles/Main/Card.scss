@@ -11,6 +11,9 @@
   --card-category-font-size: 12px;
   --card-voting-right-margin: 34px;
   --card-voting-button-height: 38px;
+  --card-grid-thumb-title-right-margin: 1px;
+  --card-grid-title-desc-separation: 7px;
+  --card-list-title-left-padding: 130px;
 }
 
 // Shared Styles
@@ -127,7 +130,7 @@
 
   .card__title .thumbs {
     min-width: $thumbs-size;
-    margin-right: 1px;
+    margin-right: var(--card-grid-thumb-title-right-margin);
   }
 
   .card__title span {
@@ -140,12 +143,16 @@
   // Desc Section
 
   .card__desc {
-    padding-left: 12%;
-    padding-right: 12%;
+    padding-left: calc(
+      #{$thumbs-size} + var(--card-grid-thumb-title-right-margin)
+    );
+    padding-right: calc(
+      #{$thumbs-size} + var(--card-grid-thumb-title-right-margin)
+    );
     font-size: var(--card-desc-font-size);
     text-align: justify;
     margin: 0;
-    margin-top: 7px;
+    margin-top: var(--card-grid-title-desc-separation);
     max-height: 36px;
   }
 
@@ -161,9 +168,31 @@
 }
 
 @media all and (min-width: 768px) {
+  :root {
+    --card-grid-size: 45.7vw;
+
+    --card-list-margin-bottom: 14px;
+    --card-grid-margin-bottom: 21px;
+    --card-body-height: 71%;
+    --card-grid-thumb-title-right-margin: 5.6px;
+    --card-grid-title-desc-separation: 13px;
+  }
+
+  // CARD GRID MODE
+
+  .card--grid {
+    margin-bottom: var(--card-grid-margin-bottom);
+
+    &:nth-last-child(-n + 2) {
+      margin-bottom: 0;
+    }
+  }
+
+  // CARD LIST MODE
+
   .card--list {
     height: 142px;
-    margin-bottom: 14px;
+    margin-bottom: var(--card-list-margin-bottom);
 
     .card__title {
       display: flex;
@@ -172,7 +201,7 @@
     .card__title span {
       color: inherit;
       font-size: 28px;
-      padding-left: 120px;
+      padding-left: var(--card-list-title-left-padding);
 
       span {
         padding-left: 0;
@@ -180,7 +209,8 @@
     }
 
     .card__desc {
-      margin: 18px 300px 0 152px;
+      margin: 18px 300px 0 0;
+      margin-left: calc(#{$thumbs-size} + var(--card-list-title-left-padding));
     }
 
     .card__voting {

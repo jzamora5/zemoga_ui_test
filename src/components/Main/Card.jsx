@@ -4,14 +4,16 @@ import Voting from './Voting';
 import GaugeBar from './GaugeBar';
 import '../../assets/styles/Main/Card.scss';
 import EllipsisText from 'react-ellipsis-text';
+import { useMediaQuery } from 'react-responsive';
 
 const remoteImgURL =
   'https://raw.githubusercontent.com/jzamora5/assets/main/zemoga';
 
 const GRADIENT =
-  'no-repeat 20px/100% linear-gradient(90deg, rgba(0, 0, 0, 0.0001) 0%, #888888 19.79%, #666666 50%, rgba(51, 51, 51, 0.6) 71.88%), ';
+  'no-repeat 35px/100% linear-gradient(90deg, rgba(0, 0, 0, 0.0001) 0%, #888888 19.79%, #666666 50%, rgba(51, 51, 51, 0.6) 71.88%), ';
 
 const Card = ({ cardData, mode }) => {
+  const isTablet = useMediaQuery({ query: '(min-device-width: 768px)' });
   let gradient = '';
   let bgSize = 'center / cover';
 
@@ -23,7 +25,7 @@ const Card = ({ cardData, mode }) => {
   if (mode === 'list') {
     imageName += '-small';
     gradient = GRADIENT;
-    bgSize = '-27px / 30% no-repeat ';
+    bgSize = '-27px / contain no-repeat ';
   }
 
   const backgroundImage = `${remoteImgURL}/${imageName}.png`;
@@ -32,12 +34,23 @@ const Card = ({ cardData, mode }) => {
     background: `${gradient}url(${backgroundImage}) ${bgSize}`,
   };
 
+  const cardTitleLengthDependingMedia = () => {
+    let length = 24;
+
+    if (isTablet) length = 80;
+
+    return length;
+  };
+
   return (
     <article className={`card--${mode}`} style={inlineStyleArticle}>
       <div className="card__body">
         <div className="card__title">
           <Thumbs type={titleThumbType} />
-          <EllipsisText text={cardData.name} length={24} />
+          <EllipsisText
+            text={cardData.name}
+            length={cardTitleLengthDependingMedia()}
+          />
         </div>
         <div className="card__desc">
           <EllipsisText text={cardData.description} length={60} />
