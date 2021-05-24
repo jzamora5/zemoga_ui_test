@@ -29,6 +29,7 @@ const Header = () => {
               <a
                 href="http://wikipedia.com"
                 className="featured-card__wikipedia-underline"
+                aria-label="Wikipedia"
               >
                 <svg
                   className="featured-card__more-info-icon"
