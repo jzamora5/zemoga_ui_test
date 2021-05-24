@@ -13,7 +13,7 @@ function App() {
         <title>Rule of thumb</title>
         <meta
           name="description"
-          content=" Rule of Thumb™️ tracks the sentiment of their users on trending and controversial people from different fields, including politics, business, media and entertainment, etc. "
+          content="Rule of Thumb™️ tracks the sentiment of their users on trending and controversial people from different fields, including politics, business, media and entertainment, etc."
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@JhoanZamora10" />
