@@ -14,6 +14,8 @@ const GRADIENT =
 
 const Card = ({ cardData, mode }) => {
   const isTablet = useMediaQuery({ query: '(min-device-width: 768px)' });
+  const isDesktop = useMediaQuery({ query: '(min-device-width: 1100px)' });
+
   let gradient = '';
   let bgSize = 'center / cover';
 
@@ -21,14 +23,16 @@ const Card = ({ cardData, mode }) => {
     cardData.votes.positive >= cardData.votes.negative ? 'up' : 'down';
 
   let imageName = cardData.picture.split('.png')[0];
+  const bgOffset = isDesktop ? '0px' : '-27px';
 
   if (mode === 'list') {
     imageName += '-small';
     gradient = GRADIENT;
-    bgSize = '-27px / contain no-repeat ';
+    bgSize = `${bgOffset} / contain no-repeat `;
   }
 
   const backgroundImage = `${remoteImgURL}/${imageName}.png`;
+  // const backgroundImage = `-webkit-image-set(url("${remoteImgURL}/${imageName}.png") 1x, url("${remoteImgURL}/${imageName}@2x.png") 2x)`;
 
   const inlineStyleArticle = {
     background: `${gradient}url(${backgroundImage}) ${bgSize}`,
@@ -37,7 +41,16 @@ const Card = ({ cardData, mode }) => {
   const cardTitleLengthDependingMedia = () => {
     let length = 24;
 
-    if (isTablet) length = 80;
+    if ((isTablet && mode === 'grid') || (isDesktop && mode === 'list'))
+      length = 80;
+
+    return length;
+  };
+
+  const cardDescLengthDependingMedia = () => {
+    let length = 60;
+
+    if (isDesktop && mode === 'list') length = 80;
 
     return length;
   };
@@ -53,7 +66,10 @@ const Card = ({ cardData, mode }) => {
           />
         </div>
         <div className="card__desc">
-          <EllipsisText text={cardData.description} length={60} />
+          <EllipsisText
+            text={cardData.description}
+            length={cardDescLengthDependingMedia()}
+          />
         </div>
         <p className="card__category">{cardData.category}</p>
         <Voting className="card__voting" category={cardData.category} />

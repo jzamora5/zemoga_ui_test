@@ -14,6 +14,7 @@
   --card-grid-thumb-title-right-margin: 1px;
   --card-grid-title-desc-separation: 7px;
   --card-list-title-left-padding: 130px;
+  --card-list-height: 142px;
 }
 
 // Shared Styles
@@ -191,7 +192,7 @@
   // CARD LIST MODE
 
   .card--list {
-    height: 142px;
+    height: var(--card-list-height);
     margin-bottom: var(--card-list-margin-bottom);
 
     .card__title {
@@ -231,6 +232,65 @@
 }
 
 @media all and (min-width: 1100px) {
+  // CARD LIST MODE
+  :root {
+    --card-list-height: 170px;
+  }
+
+  .card--list {
+    // height : 170px;
+    --card-list-title-left-padding: 214px;
+
+    .thumbs {
+      width: 45px;
+      height: 45px;
+      img {
+        width: 24px;
+      }
+    }
+
+    .card__title span {
+      font-size: 36px;
+    }
+
+    .card__desc {
+      margin-left: calc(45px + var(--card-list-title-left-padding));
+    }
+
+    .card__category {
+      font-size: 15px;
+
+      margin: 8px 14px 17px 0;
+    }
+
+    .card__voting {
+      margin-bottom: 83px;
+      margin-right: 14px;
+
+      .voting__button {
+        width: 135px;
+        height: 45px;
+      }
+
+      .voting__button span {
+        font-size: 18px;
+      }
+    }
+
+    .card__gauge-bar {
+      height: 54px;
+
+      .gauge-bar__percentage--positive,
+      .gauge-bar__percentage--negative {
+        @include flexboxCenter;
+        font-size: 27px;
+
+        img {
+          width: 22.5px;
+        }
+      }
+    }
+  }
 }
 
 @media all and (min-width: 1440px) {
