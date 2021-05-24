@@ -22,16 +22,14 @@
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
     "sass": "^1.34.0",
-    "semver": "^7.3.5",
     "web-vitals": "^1.0.1"
   },
   "engineStrict": true,
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
   },
   "scripts": {
-    "requirements-check": "node check_node_version.js",
-    "postinstall": "npm install && npm run requirements-check",
     "test": "react-scripts test",
     "start": "react-scripts start",
     "build": "react-scripts build",
