@@ -1,0 +1,5 @@
+@import '../Vars.module.scss';
+
+.voting__button:disabled {
+  background: $color-disabled-button !important;
+}

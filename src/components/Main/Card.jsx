@@ -75,7 +75,7 @@ const Card = ({ cardData, mode }) => {
           />
         </div>
         <p className="card__category">{cardData.category}</p>
-        <Voting className="card__voting" category={cardData.category} />
+        <Voting className="card__voting" id={cardData.id} />
         <GaugeBar className="card__gauge-bar" votes={cardData.votes} />
       </div>
     </article>

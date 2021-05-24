@@ -9,7 +9,7 @@ const UP = 'up';
 const positiveColor = SASSvariables['color-green-positive'];
 const negativeColor = SASSvariables['color-yellow-negative'];
 
-const Thumbs = ({ type, active, clickable, className }) => {
+const Thumbs = ({ type, active, clickable, setVote, vote, className }) => {
   const thumbsIcon = type === UP ? thumbsUpIcon : thumbsDownIcon;
   const thumbsBGColor = type === UP ? positiveColor : negativeColor;
 
@@ -20,8 +20,17 @@ const Thumbs = ({ type, active, clickable, className }) => {
 
   if (clickable) inlineThumbsStyle.cursor = 'pointer';
 
+  const handleClick = () => {
+    if (vote === type) setVote(null);
+    else setVote(type);
+  };
+
   return (
-    <div className={classNames('thumbs', className)} style={inlineThumbsStyle}>
+    <div
+      className={classNames('thumbs', className)}
+      style={inlineThumbsStyle}
+      onClick={handleClick}
+    >
       <img src={thumbsIcon} alt={`Thumbs ${type}`} />
     </div>
   );
@@ -31,6 +40,8 @@ Thumbs.defaultProps = {
   type: 'up',
   active: false,
   clickable: false,
+  setVote: () => {},
+  vote: '',
   className: '',
 };
 
@@ -38,6 +49,8 @@ Thumbs.propTypes = {
   type: PropTypes.string,
   active: PropTypes.bool,
   clickable: PropTypes.bool,
+  setVote: PropTypes.func,
+  vote: PropTypes.string,
   className: PropTypes.string,
 };
 
