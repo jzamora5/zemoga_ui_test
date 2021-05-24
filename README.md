@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Zemoga UI Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This challenge consisted in creating a responsive display component and add it to the Rule of Thumb™️ website, complying with some design specifications.
 
-## Available Scripts
+The component is interactive, allowing users to vote with a thumbs up or thumbs down depending on the opinion they have on different topics.
 
-In the project directory, you can run:
+## Tech Stack
 
-### `yarn start`
+Because the focus of the challenge was the front end, the main technologies used were:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<img src = "https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white">
+<img src = "https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white">
+<img src="https://img.shields.io/badge/-JavaScript-eed718?style=flat&logo=javascript&logoColor=ffffff">
+<img src="https://img.shields.io/badge/-Sass-cc6699?style=flat&logo=sass&logoColor=ffffff">
+<img src="https://img.shields.io/badge/-React-000000?style=flat&logo=react&logoColor=00c8ff">
+<img src="https://img.shields.io/badge/Redux-593D88?style=flat&logo=redux&logoColor=white">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+On another hand, in order to add persistence to the data, a cloud backend was used with the help of Google Cloud and Firebase/Firestore.
 
-### `yarn test`
+<img src="https://img.shields.io/badge/-Firebase-FFA611?style=flat&logo=firebase&logoColor=FFFFFF">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Live!
 
-### `yarn build`
+If you want to see a working version of the project right away, you can go to:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### [Deployed Project!](https://jzamora.me/zemoga_ui_test/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Run locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If instead you want to run it locally, you must comply with some requirements and follow the next steps:
 
-### `yarn eject`
+### `Requirements`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+Software Versions
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+node: >=14.0.0,
+npm: >=6.0.0
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+You may try to run the project with different versions at your own risk
+```
 
-## Learn More
+### Run Steps
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### `Clone Repository`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+git clone https://github.com/jzamora5/zemoga_ui_test.git
+```
 
-### Code Splitting
+#### `Go into project folder`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+cd zemoga_ui_test
+```
 
-### Analyzing the Bundle Size
+#### `Install all dependencies`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+npm install
+```
 
-### Making a Progressive Web App
+#### `Run project`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+npm run start
+```
 
-### Advanced Configuration
+#### `See project`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+In your browser go to the url:
 
-### Deployment
+http://localhost:3000
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Author
 
-### `yarn build` fails to minify
+👨🏻‍💻 Jhoan Stiven Zamora Caicedo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+🔹 [LinkedIn](https://www.linkedin.com/in/jhoan-stiven-zamora-caicedo/)
