@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Thumbs from './Thumbs';
 import Voting from './Voting';
@@ -13,6 +14,8 @@ const GRADIENT =
   'no-repeat 35px/100% linear-gradient(90deg, rgba(0, 0, 0, 0.0001) 0%, #888888 19.79%, #666666 50%, rgba(51, 51, 51, 0.6) 71.88%), ';
 
 const Card = ({ cardData, mode }) => {
+  const [vote, setVote] = useState(null);
+
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1099 });
   const isDesktop = useMediaQuery({ query: '(min-device-width: 1100px)' });
 
@@ -74,8 +77,15 @@ const Card = ({ cardData, mode }) => {
             length={cardDescLengthDependingMedia()}
           />
         </div>
-        <p className="card__category">{cardData.category}</p>
-        <Voting className="card__voting" id={cardData.id} />
+        <p className="card__category">
+          {vote === 'voted' ? 'Thank you for your vote!' : cardData.category}
+        </p>
+        <Voting
+          className="card__voting"
+          id={cardData.id}
+          vote={vote}
+          setVote={setVote}
+        />
         <GaugeBar className="card__gauge-bar" votes={cardData.votes} />
       </div>
     </article>

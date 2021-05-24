@@ -6,8 +6,18 @@ const roundVotes = (votes) => Math.round(votes * 10) / 10;
 
 const GaugeBar = ({ className, votes }) => {
   const totalVotes = votes.positive + votes.negative;
-  const positivePercent = (votes.positive * 100) / totalVotes;
-  const negativePercent = (votes.negative * 100) / totalVotes;
+
+  let positivePercent = (votes.positive * 100) / totalVotes;
+  let negativePercent = (votes.negative * 100) / totalVotes;
+  let positiveValue = positivePercent;
+  let negativeValue = negativePercent;
+
+  if (!votes.positive && !votes.negative) {
+    positivePercent = 50;
+    negativePercent = 50;
+    positiveValue = 0;
+    negativeValue = 0;
+  }
 
   return (
     <div className={className}>
@@ -17,7 +27,7 @@ const GaugeBar = ({ className, votes }) => {
       >
         <div className="gauge-bar__percentage--positive">
           <img src={thumbsUpIcon} alt="Thumbs Down" />
-          <span>{roundVotes(positivePercent)}%</span>
+          <span>{roundVotes(positiveValue)}%</span>
         </div>
       </div>
       <div
@@ -25,7 +35,7 @@ const GaugeBar = ({ className, votes }) => {
         style={{ width: `${negativePercent}%` }}
       >
         <div className="gauge-bar__percentage--negative">
-          <span>{roundVotes(negativePercent)}%</span>
+          <span>{roundVotes(negativeValue)}%</span>
           <img src={thumbsDownIcon} alt="Thumbs Up" />
         </div>
       </div>

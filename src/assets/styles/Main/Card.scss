@@ -88,6 +88,11 @@
     .gauge-bar__percentage--negative {
       @include flexboxCenter;
       font-size: 18px;
+
+      span,
+      img {
+        z-index: 10;
+      }
     }
     .gauge-bar__percentage--positive {
       margin-left: 12px;

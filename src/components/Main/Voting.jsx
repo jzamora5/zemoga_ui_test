@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Thumbs from './Thumbs';
+import { updateData } from '../../actions';
 import '../../assets/styles/Main/Voting.scss';
 
-export const Voting = ({ className, id }) => {
-  const [vote, setVote] = useState(null);
-
+export const Voting = ({ className, id, updateData, vote, setVote }) => {
   const voteMsg = vote === 'voted' ? 'Vote Again' : 'Vote Now';
 
   const handleVote = () => {
     if (vote === 'voted') {
       setVote(null);
     } else {
+      updateData(id, vote);
       setVote('voted');
-      console.log(`Voted ${vote} for ${id}`);
+      // console.log(`Voted ${vote} for ${id}`);
     }
   };
 
@@ -61,11 +61,21 @@ export const Voting = ({ className, id }) => {
 Voting.defaultProps = {
   className: '',
   id: '',
+  updateData: () => {},
+  vote: '',
+  setVote: () => {},
 };
 
 Voting.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
+  updateData: PropTypes.func,
+  vote: PropTypes.string,
+  setVote: PropTypes.func,
 };
 
-export default Voting;
+const mapDispatchToProps = {
+  updateData,
+};
+
+export default connect(null, mapDispatchToProps)(Voting);
