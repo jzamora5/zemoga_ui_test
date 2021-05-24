@@ -17,6 +17,10 @@
   width: var(--select-width);
   display: none;
 
+  .main__select__input {
+    color: transparent;
+  }
+
   .main__select__value-container {
     display: flex;
     justify-content: center;
