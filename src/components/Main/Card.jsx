@@ -13,7 +13,7 @@ const GRADIENT =
   'no-repeat 35px/100% linear-gradient(90deg, rgba(0, 0, 0, 0.0001) 0%, #888888 19.79%, #666666 50%, rgba(51, 51, 51, 0.6) 71.88%), ';
 
 const Card = ({ cardData, mode }) => {
-  const isTablet = useMediaQuery({ query: '(min-device-width: 768px)' });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1099 });
   const isDesktop = useMediaQuery({ query: '(min-device-width: 1100px)' });
 
   let gradient = '';
@@ -41,8 +41,11 @@ const Card = ({ cardData, mode }) => {
   const cardTitleLengthDependingMedia = () => {
     let length = 24;
 
-    if ((isTablet && mode === 'grid') || (isDesktop && mode === 'list'))
+    if ((isTablet && mode === 'grid') || (isDesktop && mode === 'list')) {
       length = 80;
+    } else if (isDesktop && mode === 'grid') {
+      length = 24;
+    }
 
     return length;
   };
